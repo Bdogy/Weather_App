@@ -11,22 +11,26 @@
     "
     />
   </head>
-  <nav class="navbar bg-light">
+  <nav class="navbar bg-light bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <img
-          src="/docs/5.2/assets/brand/bootstrap-logo.svg"
-          alt="Logo"
-          width="30"
-          height="24"
-          class="d-inline-block align-text-top"
-        />
-        Bootstrap
-      </a>
+      <h1 class="text-light">Weather</h1>
     </div>
   </nav>
+  <main>
+    <div class="row">
+      <aside class="col-lg-3">
+        <h2>search for a city</h2>
+        <form>
+          <div class="mb-3">
+            <input type="email" class="form-control" id="exampleInputEmail1" />
+          </div>
+          <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+      </aside>
+    </div>
+  </main>
 
-  <body></body>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js
   "></script>
+  <script src="./assets/js/script.js"></script>
 </html>
