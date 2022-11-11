@@ -25,16 +25,28 @@ function appendCurrentWeather(data) {
 }
 
 function appendToDocument(data) {
-  var iconEl = $("<img>");
-  var dateEl = $("<h3>");
-  var tempEl = $("<h4>");
-  var windEl = $("<p>");
-  var humidEl = $("<p>");
-  console.log("appendToDocument");
-  var card = $("<div>");
-  tempEl.text("TEMP");
-  card.append(tempEl);
-  box.append(card);
+  for (let i = 0; i < data.length; i++) {
+    icon = data[i].weather[0].icon;
+    var iconEl = $("<img>");
+    var dateEl = $("<h3>");
+    var tempEl = $("<h4>");
+    var windEl = $("<p>");
+    var humidEl = $("<p>");
+    console.log("appendToDocument");
+    var card = $("<div>");
+    dateEl.text(data[i].dt_txt.split(" ")[0]);
+    tempEl.text("Temp " + data[i].main.temp + "F");
+    windEl.text("Wind " + data[i].wind.speed + "MPH");
+    humidEl.text("Humidity " + data[i].main.humidity + "%");
+    iconEl.attr("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png");
+    card.append(iconEl);
+    card.append(dateEl);
+    card.append(tempEl);
+    card.append(humidEl);
+    card.append(windEl);
+
+    box.append(card);
+  }
 }
 
 //create weather cards and appends to document
