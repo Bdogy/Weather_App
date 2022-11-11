@@ -44,17 +44,20 @@ function appendCurrentWeather(data) {
   var tempEl = $("<h4>");
   var windEl = $("<p>");
   var humidEl = $("<p>");
+  var todayCard = $("<div>");
   icon = data.weather[0].icon;
   dateEl.text(data.name + " Today");
   tempEl.text("Temp " + data.main.temp + "F");
   windEl.text("Wind " + data.wind.speed + "MPH");
   humidEl.text("Humidity " + data.main.humidity + "%");
   iconEl.attr("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png");
-  today.append(iconEl);
-  today.append(dateEl);
-  today.append(tempEl);
-  today.append(humidEl);
-  today.append(windEl);
+  todayCard.addClass("d-flex flex-column align-items-center");
+  todayCard.append(iconEl);
+  todayCard.append(dateEl);
+  todayCard.append(tempEl);
+  todayCard.append(humidEl);
+  todayCard.append(windEl);
+  today.append(todayCard);
 }
 
 //appends 5 day forecast to document
