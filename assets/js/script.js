@@ -1,5 +1,6 @@
 var userInput = $("#citySearch");
 var formButton = $("#submit");
+var recentBtn = $("#recent");
 var box = $("#CardBox");
 var today = $("#todayCard");
 var pastSearchBox = $("#pastSearch");
@@ -14,6 +15,7 @@ function save() {
     );
     for (let i = 0; i < pastSearch.length; i++) {
       cityEl = $("<button>");
+      cityEl.attr("id", "recent");
       cityEl.text(pastSearch[i]);
       pastSearchBox.append(cityEl);
     }
@@ -26,6 +28,7 @@ function store(city) {
   console.log(pastSearch);
   cityEl = $("<button>");
   for (let i = 0; i < 5; i++) {
+    cityEl.attr("id", "recent");
     cityEl.text(pastSearch[i]);
     pastSearchBox.append(cityEl);
   }
@@ -40,7 +43,7 @@ function appendCurrentWeather(data) {
   var windEl = $("<p>");
   var humidEl = $("<p>");
   icon = data.weather[0].icon;
-  dateEl.text(data.name + " today");
+  dateEl.text(data.name + " Today");
   tempEl.text("Temp " + data.main.temp + "F");
   windEl.text("Wind " + data.wind.speed + "MPH");
   humidEl.text("Humidity " + data.main.humidity + "%");
@@ -156,7 +159,15 @@ save();
 
 formButton.click(function (event) {
   event.preventDefault();
+  console.log("clicked");
   input = userInput.val();
   store(input);
+  lonLatLocation(input);
+});
+
+pastSearchBox.on("click", "#recent", function (event) {
+  event.preventDefault();
+  input = event.target.innerText;
+  console.log(event.target.innerText);
   lonLatLocation(input);
 });
