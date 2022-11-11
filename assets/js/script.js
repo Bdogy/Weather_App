@@ -1,8 +1,23 @@
 var userInput = $("#citySearch");
 var formButton = $("#submit");
-var url =
-  "api.openweathermap.org/data/2.5/forecast?lat=51.5073219&lon=-0.1276474&units=imperial&appid=569d785adfe9b44db482c835162b2e7a";
 
+//gets weather for city
+function fetchWeather(lat, lon) {
+  var url =
+    "http://api.openweathermap.org/data/2.5/forecast?lat=" +
+    lat +
+    "&lon=" +
+    lon +
+    "&units=imperial&cnt=5&appid=569d785adfe9b44db482c835162b2e7a";
+  fetch(url)
+    .then(function (response) {
+      console.log(response);
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+    });
+}
 //grabs lat and lon of city
 function lonLatLocation(city) {
   console.log(city);
@@ -23,10 +38,6 @@ function lonLatLocation(city) {
       cityLon = city.lon;
       fetchWeather(cityLat, cityLon);
     });
-}
-//form submission function
-function fetchWeather(city) {
-  console.log(city);
 }
 
 formButton.click(function (event) {
