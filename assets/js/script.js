@@ -24,6 +24,7 @@ function appendCurrentWeather(data) {
   today.append(windEl);
 }
 
+//appends 5 day forecast to document
 function appendToDocument(data) {
   for (let i = 0; i < data.length; i++) {
     icon = data[i].weather[0].icon;
@@ -45,6 +46,7 @@ function appendToDocument(data) {
     card.append(humidEl);
     card.append(windEl);
 
+    card.addClass("m-3");
     box.append(card);
   }
 }
