@@ -2,9 +2,37 @@ var userInput = $("#citySearch");
 var formButton = $("#submit");
 var box = $("#CardBox");
 var today = $("#todayCard");
+var pastSearchBox = $("#pastSearch");
+var pastSearch = [];
+
+//appends latest search and stores in localStorage
+function save() {
+  console.log(pastSearch);
+  if (JSON.parse(localStorage.getItem("searches")) !== null) {
+    pastSearch = pastSearch.concat(
+      JSON.parse(localStorage.getItem("searches"))
+    );
+    for (let i = 0; i < pastSearch.length; i++) {
+      cityEl = $("<button>");
+      cityEl.text(pastSearch[i]);
+      pastSearchBox.append(cityEl);
+    }
+  }
+  return pastSearch;
+}
+
+function store(city) {
+  pastSearch.push(city);
+  console.log(pastSearch);
+  cityEl = $("<button>");
+  for (let i = 0; i < 5; i++) {
+    cityEl.text(pastSearch[i]);
+    pastSearchBox.append(cityEl);
+  }
+  localStorage.setItem("searches", JSON.stringify(pastSearch));
+}
 
 //appends info to document
-
 function appendCurrentWeather(data) {
   var iconEl = $("<img>");
   var dateEl = $("<h3>");
@@ -124,8 +152,11 @@ function lonLatLocation(city) {
     });
 }
 
+save();
+
 formButton.click(function (event) {
   event.preventDefault();
   input = userInput.val();
+  store(input);
   lonLatLocation(input);
 });
