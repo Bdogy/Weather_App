@@ -2,15 +2,15 @@ var userInput = $("#citySearch");
 var formButton = $("#submit");
 var box = $("#CardBox");
 var today = $("#todayCard");
-card = $("<div>");
-iconEl = $("<img>");
-dateEl = $("<h3>");
-tempEl = $("<h4>");
-windEl = $("<p>");
-humidEl = $("<p>");
+
 //appends info to document
 
 function appendCurrentWeather(data) {
+  var iconEl = $("<img>");
+  var dateEl = $("<h3>");
+  var tempEl = $("<h4>");
+  var windEl = $("<p>");
+  var humidEl = $("<p>");
   icon = data.weather[0].icon;
   dateEl.text(data.name + " today");
   tempEl.text("Temp " + data.main.temp + "F");
@@ -24,23 +24,17 @@ function appendCurrentWeather(data) {
   today.append(windEl);
 }
 
-function appendToDocument(fiveDayArr) {
-  //splits dt text by space and grabs numeric date only not time
-  date = fiveDayArr[0].dt_txt.split(" ")[0];
-  dateEl.text("City" + " " + "(" + date + ")");
-  icon = data.weather[0].icon;
-  dateEl.text(data.name + " today");
-  tempEl.text("Temp " + data.main.temp + "F");
-  windEl.text("Wind " + data.wind.speed + "MPH");
-  humidEl.text("Humidity " + data.main.humidity + "%");
-  iconEl.attr("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png");
-  today.append(iconEl);
-  today.append(dateEl);
-  today.append(tempEl);
-  today.append(humidEl);
-  today.append(windEl);
-
-  for (let i = 1; i < fiveDayArr.length; i++) {}
+function appendToDocument(data) {
+  var iconEl = $("<img>");
+  var dateEl = $("<h3>");
+  var tempEl = $("<h4>");
+  var windEl = $("<p>");
+  var humidEl = $("<p>");
+  console.log("appendToDocument");
+  var card = $("<div>");
+  tempEl.text("TEMP");
+  card.append(tempEl);
+  box.append(card);
 }
 
 //create weather cards and appends to document
