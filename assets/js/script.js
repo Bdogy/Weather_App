@@ -1,5 +1,26 @@
 var userInput = $("#citySearch");
 var formButton = $("#submit");
+var box = $("#CardBox");
+var today = $("#todayCard");
+//appends info to document
+function appendToDocument(fiveDayArr) {
+  card = $("<div>");
+  iconEl = $("<img>");
+  dateEl = $("<h3>");
+  tempEl = $("<h4>");
+  windEl = $("<p>");
+  humidEl = $("<p>");
+  //splits dt text by space and grabs numeric date only not time
+  date = fiveDayArr[0].dt_txt.split(" ")[0];
+
+  dateEl.text("City" + " " + "(" + date + ")");
+  tempEl.text(fiveDayArr[0].main.temp + "F");
+  tempEl.text(fiveDayArr[0].wind.speed + "MPH");
+  today.append(dateEl);
+  today.append(tempEl);
+
+  //   for (let i = 1; i < fiveDayArr.length; i++) {}
+}
 
 //create weather cards and appends to document
 function filterTimes(arr) {
