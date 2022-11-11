@@ -50,7 +50,7 @@ function appendCurrentWeather(data) {
   tempEl.text("Temp " + data.main.temp + "F");
   windEl.text("Wind " + data.wind.speed + "MPH");
   humidEl.text("Humidity " + data.main.humidity + "%");
-  iconEl.attr("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png");
+  iconEl.attr("src", "https://openweathermap.org/img/wn/" + icon + "@2x.png");
   todayCard.addClass("d-flex flex-column align-items-center");
   todayCard.append(iconEl);
   todayCard.append(dateEl);
@@ -121,7 +121,7 @@ function currentWeather(lat, lon) {
 
 function fetchWeather(lat, lon) {
   var url =
-    "http://api.openweathermap.org/data/2.5/forecast?lat=" +
+    "https://api.openweathermap.org/data/2.5/forecast?lat=" +
     lat +
     "&lon=" +
     lon +
