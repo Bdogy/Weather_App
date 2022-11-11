@@ -16,6 +16,7 @@ function save() {
     for (let i = 0; i < pastSearch.length; i++) {
       cityEl = $("<button>");
       cityEl.attr("id", "recent");
+      cityEl.addClass("btn btn-info m-3");
       cityEl.text(pastSearch[i]);
       pastSearchBox.append(cityEl);
     }
@@ -29,6 +30,7 @@ function store(city) {
   cityEl = $("<button>");
   for (let i = 0; i < 5; i++) {
     cityEl.attr("id", "recent");
+    cityEl.addClass("btn btn-info m-3");
     cityEl.text(pastSearch[i]);
     pastSearchBox.append(cityEl);
   }
@@ -161,6 +163,9 @@ formButton.click(function (event) {
   event.preventDefault();
   console.log("clicked");
   input = userInput.val();
+  box.empty();
+  today.empty();
+  today.addClass("border border-dark border-3 m-2 p-2 rounder-2");
   store(input);
   lonLatLocation(input);
 });
@@ -168,6 +173,9 @@ formButton.click(function (event) {
 pastSearchBox.on("click", "#recent", function (event) {
   event.preventDefault();
   input = event.target.innerText;
+  box.empty();
+  today.empty();
+  today.addClass("border border-dark border-3 m-2 p-2 rounded-2");
   console.log(event.target.innerText);
   lonLatLocation(input);
 });
