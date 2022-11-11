@@ -1,6 +1,18 @@
 var userInput = $("#citySearch");
 var formButton = $("#submit");
 
+//create weather cards and appends to document
+function filterTimes(arr) {
+  var fiveDayArr = [];
+  for (let i = 0; i < arr.length - 6; i++) {
+    fiveDayArr = fiveDayArr.concat(arr[i]);
+    i += 7;
+    console.log(i);
+  }
+  console.log(fiveDayArr);
+  appendToDocument(fiveDayArr);
+}
+
 //gets weather for city
 function fetchWeather(lat, lon) {
   var url =
@@ -8,7 +20,7 @@ function fetchWeather(lat, lon) {
     lat +
     "&lon=" +
     lon +
-    "&units=imperial&cnt=5&appid=569d785adfe9b44db482c835162b2e7a";
+    "&units=imperial&appid=569d785adfe9b44db482c835162b2e7a";
   fetch(url)
     .then(function (response) {
       console.log(response);
@@ -16,6 +28,8 @@ function fetchWeather(lat, lon) {
     })
     .then(function (data) {
       console.log(data);
+      console.log(data.list);
+      filterTimes(data.list);
     });
 }
 //grabs lat and lon of city
