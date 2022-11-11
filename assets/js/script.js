@@ -10,24 +10,37 @@ windEl = $("<p>");
 humidEl = $("<p>");
 //appends info to document
 
-function appendCurrentWeather() {
-  date = fiveDayArr[0].dt_txt.split(" ")[0];
-  dateEl.text("City" + " " + "(" + date + ")");
-  tempEl.text(fiveDayArr[0].main.temp + "F");
-  tempEl.text(fiveDayArr[0].wind.speed + "MPH");
+function appendCurrentWeather(data) {
+  icon = data.weather[0].icon;
+  dateEl.text(data.name + " today");
+  tempEl.text("Temp " + data.main.temp + "F");
+  windEl.text("Wind " + data.wind.speed + "MPH");
+  humidEl.text("Humidity " + data.main.humidity + "%");
+  iconEl.attr("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png");
+  today.append(iconEl);
   today.append(dateEl);
   today.append(tempEl);
+  today.append(humidEl);
+  today.append(windEl);
 }
 
 function appendToDocument(fiveDayArr) {
-  // //splits dt text by space and grabs numeric date only not time
-  // date = fiveDayArr[0].dt_txt.split(" ")[0];
-  // dateEl.text("City" + " " + "(" + date + ")");
-  // tempEl.text(fiveDayArr[0].main.temp + "F");
-  // tempEl.text(fiveDayArr[0].wind.speed + "MPH");
-  // today.append(dateEl);
-  // today.append(tempEl);
-  //   for (let i = 1; i < fiveDayArr.length; i++) {}
+  //splits dt text by space and grabs numeric date only not time
+  date = fiveDayArr[0].dt_txt.split(" ")[0];
+  dateEl.text("City" + " " + "(" + date + ")");
+  icon = data.weather[0].icon;
+  dateEl.text(data.name + " today");
+  tempEl.text("Temp " + data.main.temp + "F");
+  windEl.text("Wind " + data.wind.speed + "MPH");
+  humidEl.text("Humidity " + data.main.humidity + "%");
+  iconEl.attr("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png");
+  today.append(iconEl);
+  today.append(dateEl);
+  today.append(tempEl);
+  today.append(humidEl);
+  today.append(windEl);
+
+  for (let i = 1; i < fiveDayArr.length; i++) {}
 }
 
 //create weather cards and appends to document
