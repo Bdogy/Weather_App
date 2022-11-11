@@ -46,6 +46,7 @@ function appendToDocument(data) {
     card.append(humidEl);
     card.append(windEl);
 
+    card.addClass("cards");
     card.addClass("m-3");
     box.append(card);
   }
