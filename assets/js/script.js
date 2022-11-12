@@ -24,6 +24,7 @@ function save() {
   return pastSearch;
 }
 
+//stores search into local memory and creates button element for search
 function store(city) {
   pastSearch.push(city);
   console.log(pastSearch);
@@ -100,8 +101,7 @@ function filterTimes(arr) {
   appendToDocument(fiveDayArr);
 }
 
-//gets weather for city
-
+//gets current weather for city
 function currentWeather(lat, lon) {
   var url =
     "https://api.openweathermap.org/data/2.5/weather?lat=" +
@@ -118,7 +118,7 @@ function currentWeather(lat, lon) {
       appendCurrentWeather(data);
     });
 }
-
+//gets forecast weather for city
 function fetchWeather(lat, lon) {
   var url =
     "https://api.openweathermap.org/data/2.5/forecast?lat=" +
@@ -160,12 +160,15 @@ function lonLatLocation(city) {
     });
 }
 
+//shows recent city searches on page load
 save();
 
+//when you click the search button runs weather api calls
 formButton.click(function (event) {
   event.preventDefault();
   console.log("clicked");
   input = userInput.val();
+  //clears weather info to display new
   box.empty();
   today.empty();
   today.addClass("border border-dark border-3 m-2 p-2 rounder-2");
@@ -173,9 +176,11 @@ formButton.click(function (event) {
   lonLatLocation(input);
 });
 
+//when click recent searches
 pastSearchBox.on("click", "#recent", function (event) {
   event.preventDefault();
   input = event.target.innerText;
+  //clears weather info to display new
   box.empty();
   today.empty();
   today.addClass("border border-dark border-3 m-2 p-2 rounded-2");
