@@ -142,7 +142,7 @@ function fetchWeather(lat, lon) {
 function lonLatLocation(city) {
   console.log(city);
   var urlLatLon =
-    "http://api.openweathermap.org/geo/1.0/direct?q=" +
+    "https://api.openweathermap.org/geo/1.0/direct?q=" +
     city +
     "&limit=5&appid=569d785adfe9b44db482c835162b2e7a";
   console.log(urlLatLon);
