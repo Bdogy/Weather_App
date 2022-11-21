@@ -7,7 +7,7 @@ This webpage is made using open weather API, it will display the current weather
 ## Github Page
 
 Link to the github page:
-https://bdogy.github.io/Weather_App/
+https://Jacksongrimm.github.io/Weather_App/
 
 ## Screen shots
 
